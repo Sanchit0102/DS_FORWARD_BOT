@@ -55,7 +55,7 @@ async def pub_(bot, message):
        return await stop(client, user)
     temp.forwardings += 1
     await db.add_frwd(user)
-    await send(client, user, "<b>🧡 ғᴏʀᴡᴀʀᴅɪɴɢ sᴛᴀʀᴛᴇᴅ 🥀 <a href=https://t.me/SMKTHEBOTZ>SUPPORT</a>🥀</b>")
+    await send(client, user, "<b>🧡 ғᴏʀᴡᴀʀᴅɪɴɢ sᴛᴀʀᴛᴇᴅ 🥀 <a href=https://t.me/THE_SILENT_TEAMS>SUPPORT</a>🥀</b>")
     sts.add(time=True)
     sleep = 1 if _bot['is_bot'] else 10
     await msg_edit(m, "<code>Processing...</code>") 
@@ -109,7 +109,7 @@ async def pub_(bot, message):
             temp.IS_FRWD_CHAT.remove(sts.TO)
             return await stop(client, user)
         temp.IS_FRWD_CHAT.remove(sts.TO)
-        await send(client, user, "<b>🎉 ғᴏʀᴡᴀᴅɪɴɢ ᴄᴏᴍᴘʟᴇᴛᴇᴅ 🥀 <a href=https://t.me/SMKTHEBOTZ>SUPPORT</a>🥀</b>")
+        await send(client, user, "<b>🎉 ғᴏʀᴡᴀᴅɪɴɢ ᴄᴏᴍᴘʟᴇᴛᴇᴅ 🥀 <a href=https://t.me/THE_SILENT_TEAMS>SUPPORT</a>🥀</b>")
         await edit(m, 'Completed', "completed", sts) 
         await stop(client, user)
             
@@ -197,8 +197,8 @@ async def edit(msg, title, status, sts):
    text = TEXT.format(i.fetched, i.total_files, i.duplicate, i.deleted, i.skip, status, percentage, estimated_total_time, progress)
    if status in ["cancelled", "completed"]:
       button.append(
-         [InlineKeyboardButton('Support', url='https://t.me/SMk_talks'),
-         InlineKeyboardButton('Updates', url='https://t.me/SMKTHEBOTZ')]
+         [InlineKeyboardButton('Dev', url='https://t.me/THE_DS_OFFICIAL'),
+         InlineKeyboardButton('Updates', url='https://t.me/THE_SILENT_TEAMS')]
          )
    else:
       button.append([InlineKeyboardButton('• ᴄᴀɴᴄᴇʟ', 'terminate_frwd')])
