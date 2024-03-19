@@ -9,7 +9,7 @@ class Translation(object):
 ɪ ᴄᴀɴ ғᴏʀᴡᴀʀᴅ ᴀʟʟ ᴍᴇssᴀɢᴇ ғʀᴏᴍ ᴏɴᴇ ᴄʜᴀɴɴᴇʟ ᴛᴏ ᴀɴᴏᴛʜᴇʀ ᴄʜᴀɴɴᴇʟ</i> <b>➜ ᴡɪᴛʜ ᴍᴏʀᴇ ғᴇᴀᴛᴜʀᴇs.
 ᴄʟɪᴄᴋ ʜᴇʟᴘ ʙᴜᴛᴛᴏɴ ᴛᴏ ᴋɴᴏᴡ ᴍᴏʀᴇ ᴀʙᴏᴜᴛ ᴍᴇ</b>
 
-<b>👨🏼‍💻 ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ: <a href='https://t.me/SMKTHEBOTZ'>SMK</a>🥀</b>"""
+<b>👨🏼‍💻 ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ: <a href='https://t.me/THE_DS_OFFICIAL'>𝚂𝙰𝙽𝙲𝙷𝙸𝚃 ♛⛧</a>🥀</b>"""
 
 
   HELP_TXT = """<b><u>🔆 HELP</b></u>
@@ -41,9 +41,9 @@ class Translation(object):
   
   ABOUT_TXT = """<b>╭──────❰ 🤖 Bot Details ❱──────〄
 │ 
-│ 🤖 Mʏ Nᴀᴍᴇ : <a href=https://t.me/SMKFORWARDBOT>ғᴏʀᴡᴀʀᴅ ʙᴏᴛ</a>
-│ 👨‍💻 ᴅᴇᴠᴘʟᴏᴇʀ : <a href=https://t.me/MADARA_FT_SMK>𝙢𝙖𝙙𝙖𝙧𝙖</a>
-│ 🤖 ᴜᴘᴅᴀᴛᴇ  : <a href=https://t.me/SMKTHEBOTZ>SMK THE BOTZ</a>
+│ 🤖 Mʏ Nᴀᴍᴇ : ғᴏʀᴡᴀʀᴅ ʙᴏᴛ
+│ 👨‍💻 ᴅᴇᴠᴘʟᴏᴇʀ : <a href=https://t.me/THE_DS_OFFICIAL>𝚂𝙰𝙽𝙲𝙷𝙸𝚃 ♛⛧</a>
+│ 🤖 ᴜᴘᴅᴀᴛᴇ  : <a href=https://t.me/THE_SILENT_TEAMS>Tʜᴇ Sɪʟᴇɴᴛ Tᴇᴀᴍ</a>
 │ 📡 ʜᴏsᴛ ᴏɴ : <a href=https://www.Heroku.com/>Heroku</a>
 │ 🗣️ ʟᴀɴɢᴜᴀɢᴇ  : ᴘʏᴛʜᴏɴ 3 
 {python_version}
