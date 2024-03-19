@@ -46,7 +46,6 @@ class Translation(object):
 │ 🤖 ᴜᴘᴅᴀᴛᴇ  : <a href=https://t.me/THE_SILENT_TEAMS>Tʜᴇ Sɪʟᴇɴᴛ Tᴇᴀᴍ</a>
 │ 📡 ʜᴏsᴛ ᴏɴ : <a href=https://www.Heroku.com/>Heroku</a>
 │ 🗣️ ʟᴀɴɢᴜᴀɢᴇ  : ᴘʏᴛʜᴏɴ 3 
-{python_version}
 │ 📚 ʟɪʙʀᴀʀʏ  : ᴘʏʀᴏɢʀᴀᴍ  
 ╰────────────────────⍟</b>"""
   
