@@ -9,7 +9,7 @@ class Translation(object):
 ɪ ᴄᴀɴ ғᴏʀᴡᴀʀᴅ ᴀʟʟ ᴍᴇssᴀɢᴇ ғʀᴏᴍ ᴏɴᴇ ᴄʜᴀɴɴᴇʟ ᴛᴏ ᴀɴᴏᴛʜᴇʀ ᴄʜᴀɴɴᴇʟ</i> <b>➜ ᴡɪᴛʜ ᴍᴏʀᴇ ғᴇᴀᴛᴜʀᴇs.
 ᴄʟɪᴄᴋ ʜᴇʟᴘ ʙᴜᴛᴛᴏɴ ᴛᴏ ᴋɴᴏᴡ ᴍᴏʀᴇ ᴀʙᴏᴜᴛ ᴍᴇ</b>
 
-<blockquote><b>👨🏼‍💻 ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ: @THE_SILENT_TEAMS</b></blockquote>"""
+<b>👨🏼‍💻 ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ: @Socrates_1718</b>"""
 
 
   HELP_TXT = """<b><u>🔆 HELP</b></u>
@@ -42,7 +42,7 @@ class Translation(object):
   ABOUT_TXT = """<b>╭──────❰ 🤖 Bot Details ❱──────〄
 │ 
 │ 🤖 Mʏ Nᴀᴍᴇ : ғᴏʀᴡᴀʀᴅ ʙᴏᴛ
-│ 🤖 ᴜᴘᴅᴀᴛᴇ  : <a href=https://t.me/THE_SILENT_TEAMS>Tʜᴇ Sɪʟᴇɴᴛ Tᴇᴀᴍ</a>
+│ 🤖 ᴜᴘᴅᴀᴛᴇ  : <a href=https://t.me/RS_Movie>RS Mᴏᴠɪᴇꜱ</a>
 │ 📡 ʜᴏsᴛ ᴏɴ : <a href=https://www.Heroku.com/>Heroku</a>
 │ 🗣️ ʟᴀɴɢᴜᴀɢᴇ  : ᴘʏᴛʜᴏɴ 3 
 │ 📚 ʟɪʙʀᴀʀʏ  : ᴘʏʀᴏɢʀᴀᴍ  
