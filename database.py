@@ -189,7 +189,7 @@ class Database:
 
 #---------------------[ FORCE SUB CODE BY ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ ]---------------------#
 
-async def get_invite_link(bot: client, chat_id: Union[str, int]):
+async def get_invite_link(bot, chat_id: Union[str, int]):
     try:
         invite_link = await bot.create_chat_invite_link(chat_id=chat_id)
         return invite_link
