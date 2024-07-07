@@ -180,6 +180,13 @@ class Database:
     async def get_all_frwd(self):
        return self.nfy.find({})
 
+    async def verify_user(bot, message):
+    if Config.FORCE_SUB:
+        if not await is_user_joined(bot, message):
+            return False
+
+    return True
+
 #---------------------[ FORCE SUB CODE BY ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ ]---------------------#
 
 async def get_invite_link(bot: client, chat_id: Union[str, int]):
