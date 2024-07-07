@@ -20,7 +20,7 @@ main_buttons = [[
 #===================Start Function===================#
 
 @Client.on_message(filters.private & filters.command(['start']))
-async def start(bot, message):
+async def start(client, message):
     # if not await verify_user(bot, message):
         # return
     user = message.from_user
