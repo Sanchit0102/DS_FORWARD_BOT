@@ -2,7 +2,7 @@ import os
 import sys
 import asyncio 
 from database import db, mongodb_version
-from config import Config, temp, AUTH_CHANNEL
+from config import Config, temp
 from platform import python_version
 from translation import Translation
 from pyrogram import Client, filters, enums, __version__ as pyrogram_version
