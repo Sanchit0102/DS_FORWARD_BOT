@@ -18,7 +18,8 @@ class Config:
     FORCE_SUB_ID = env.get('FORCE_SUB_ID', '-1002224312828')
     FORCE_SUB = env.get('FORCE_UPDATES_CHANNEL', True)
     FORCE_SUB = True if str(FORCE_SUB).lower() == "true" else False
-
+    VERIFY_PIC = env.get('VERIFY_PIC', "https://graph.org/file/736e21cc0efa4d8c2a0e4.jpg")
+    
 class temp(object): 
     lock = {}
     CANCEL = {}
