@@ -215,7 +215,7 @@ async def is_user_joined(bot: client, message: Message):
             )
             return False
     except UserNotParticipant:
-        invite_link = await get_invite_link(bot: client, chat_id=channel_chat_id)
+        invite_link = await get_invite_link(bot, chat_id=channel_chat_id)
         if Config.VERIFY_PIC:
             ver = await message.reply_photo(
                 photo=Config.VERIFY_PIC,
