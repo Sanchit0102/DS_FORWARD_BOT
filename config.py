@@ -1,5 +1,6 @@
 import re
 import os
+import dotenv
 from os import environ 
 from dotenv import load_dotenv
 
