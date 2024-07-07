@@ -21,7 +21,7 @@ main_buttons = [[
 
 @Client.on_message(filters.private & filters.command(['start']))
 async def start(client, message):
-    if not await verify_user(bot, message):
+    if not await verify_user(client, message):
         return
     user = message.from_user
     if not await db.is_user_exist(user.id):
