@@ -12,7 +12,9 @@ class Config:
     DATABASE_URI = environ.get("DATABASE", "mongodb+srv://trumbot:trumbot@cluster0.cfkaeno.mongodb.net/?retryWrites=true&w=majority")
     DATABASE_NAME = environ.get("DATABASE_NAME", "publicforward-bot")
     BOT_OWNER_ID = [int(id) for id in environ.get("BOT_OWNER_ID", '1562935405').split()]
-    AUTH_CHANNEL = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('AUTH_CHANNEL', '-1002158291506').split()] # give channel id with seperate space. Ex : ('-10073828 -102782829 -1007282828')
+    FORCE_SUB_ID = env.get('FORCE_SUB_ID', '-1002224312828')
+    FORCE_SUB = env.get('FORCE_UPDATES_CHANNEL', True)
+    FORCE_SUB = True if str(FORCE_SUB).lower() == "true" else False
 
 class temp(object): 
     lock = {}
