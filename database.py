@@ -52,6 +52,10 @@ class Database:
     async def total_channels(self):
         count = await self.chl.count_documents({})
         return count
+
+    async def total_users_count(self):
+        count = await self.col.count_documents({})
+        return count
     
     async def remove_ban(self, id):
         ban_status = dict(
