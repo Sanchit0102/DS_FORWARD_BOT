@@ -198,7 +198,7 @@ async def get_invite_link(bot, chat_id: Union[str, int]):
         await asyncio.sleep(e.value)
         return await get_invite_link(bot, chat_id)
 
-async def is_user_joined(bot: client, message: Message):
+async def is_user_joined(bot, message: Message):
     if Config.FORCE_SUB_ID and Config.FORCE_SUB_ID.startswith("-100"):
         channel_chat_id = int(Config.FORCE_SUB_ID)    # When id startswith with -100
     elif Config.FORCE_SUB_ID and (not Config.FORCE_SUB_ID.startswith("-100")):
