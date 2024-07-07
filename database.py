@@ -189,16 +189,16 @@ class Database:
 
 #---------------------[ FORCE SUB CODE BY ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ ]---------------------#
 
-async def get_invite_link(bot, chat_id: Union[str, int]):
+async def get_invite_link(client, chat_id: Union[str, int]):
     try:
-        invite_link = await bot.create_chat_invite_link(chat_id=chat_id)
+        invite_link = await client.create_chat_invite_link(chat_id=chat_id)
         return invite_link
     except FloodWait as e:
         print(f"Sleep of {e.value}s caused by FloodWait ...")
         await asyncio.sleep(e.value)
-        return await get_invite_link(bot, chat_id)
+        return await get_invite_link(client, chat_id)
 
-async def is_user_joined(bot, message: Message):
+async def is_user_joined(client, message: Message):
     if Config.FORCE_SUB_ID and Config.FORCE_SUB_ID.startswith("-100"):
         channel_chat_id = int(Config.FORCE_SUB_ID)    # When id startswith with -100
     elif Config.FORCE_SUB_ID and (not Config.FORCE_SUB_ID.startswith("-100")):
@@ -206,7 +206,7 @@ async def is_user_joined(bot, message: Message):
     else:
         return 200
     try:
-        user = await bot.get_chat_member(chat_id=channel_chat_id, user_id=message.from_user.id)
+        user = await client.get_chat_member(chat_id=channel_chat_id, user_id=message.from_user.id)
         if user.status == "BANNED":
             await message.reply_text(
                 text=f"Sorry, You Are Banned To Use Me !",
@@ -215,7 +215,7 @@ async def is_user_joined(bot, message: Message):
             )
             return False
     except UserNotParticipant:
-        invite_link = await get_invite_link(bot, chat_id=channel_chat_id)
+        invite_link = await get_invite_link(client, chat_id=channel_chat_id)
         if Config.VERIFY_PIC:
             ver = await message.reply_photo(
                 photo=Config.VERIFY_PIC,
