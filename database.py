@@ -180,9 +180,9 @@ class Database:
     async def get_all_frwd(self):
        return self.nfy.find({})
 
-    async def verify_user(bot, message):        
+    async def verify_user(client, message):        
         if Config.FORCE_SUB:
-            if not await is_user_joined(bot, message):
+            if not await is_user_joined(client, message):
                 return False
 
         return True
