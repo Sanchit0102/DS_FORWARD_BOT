@@ -1,7 +1,7 @@
 import os
 import sys
 import asyncio 
-from database import db, mongodb_version
+from database import *
 from config import Config, temp
 from platform import python_version
 from translation import Translation
@@ -16,35 +16,13 @@ main_buttons = [[
         InlineKeyboardButton('⚙️ sᴇᴛᴛɪɴɢs ⚙️', callback_data='settings#main')
         ]]
 
-async def is_subscribed(bot, query, channel):
-    btn = []
-    for id in channel:
-        chat = await bot.get_chat(int(id))
-        try:
-            await bot.get_chat_member(id, query.from_user.id)
-        except UserNotParticipant:
-            btn.append([InlineKeyboardButton(f'Join {chat.title}', url=chat.invite_link)])
-        except Exception as e:
-            pass
-    return btn
-        
+
 #===================Start Function===================#
 
 @Client.on_message(filters.private & filters.command(['start']))
-async def start(client, message):
-    if AUTH_CHANNEL:
-        try:
-            btn = await is_subscribed(client, message, AUTH_CHANNEL)
-            if btn:
-                username = (await client.get_me()).username
-                if message.command[1]:
-                    btn.append([InlineKeyboardButton("♻️ Try Again ♻️", url=f"https://t.me/{username}?start={message.command[1]}")])
-                else:
-                    btn.append([InlineKeyboardButton("♻️ Try Again ♻️", url=f"https://t.me/{username}?start=true")])
-                await message.reply_text(text=f"<b>👋 Hello {message.from_user.mention},\n\nPlease join the channel then click on try again button. 😇</b>", reply_markup=InlineKeyboardMarkup(btn))
-                return
-        except Exception as e:
-            print(e)
+async def start(bot: client, message):
+    if not await verify_user(bot, message):
+        return
     user = message.from_user
     if not await db.is_user_exist(user.id):
       await db.add_user(user.id, user.first_name)
