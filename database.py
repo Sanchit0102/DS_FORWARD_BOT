@@ -2,6 +2,14 @@ from os import environ
 from config import Config
 import motor.motor_asyncio
 from pymongo import MongoClient
+from pyrogram.errors import UserNotParticipant, FloodWait
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
+from pyrogram.enums.parse_mode import ParseMode
+import asyncio
+from typing import (
+    Union
+)
+
 
 async def mongodb_version():
     x = MongoClient(Config.DATABASE_URI)
@@ -167,5 +175,70 @@ class Database:
     
     async def get_all_frwd(self):
        return self.nfy.find({})
+
+#---------------------[ FORCE SUB CODE BY ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ ]---------------------#
+
+async def get_invite_link(bot: client, chat_id: Union[str, int]):
+    try:
+        invite_link = await bot.create_chat_invite_link(chat_id=chat_id)
+        return invite_link
+    except FloodWait as e:
+        print(f"Sleep of {e.value}s caused by FloodWait ...")
+        await asyncio.sleep(e.value)
+        return await get_invite_link(bot, chat_id)
+
+async def is_user_joined(bot: client, message: Message):
+    if Config.FORCE_SUB_ID and Config.FORCE_SUB_ID.startswith("-100"):
+        channel_chat_id = int(Config.FORCE_SUB_ID)    # When id startswith with -100
+    elif Config.FORCE_SUB_ID and (not Config.FORCE_SUB_ID.startswith("-100")):
+        channel_chat_id = Config.FORCE_SUB_ID     # When id not startswith -100
+    else:
+        return 200
+    try:
+        user = await bot.get_chat_member(chat_id=channel_chat_id, user_id=message.from_user.id)
+        if user.status == "BANNED":
+            await message.reply_text(
+                text=f"Sorry, You Are Banned To Use Me !",
+                parse_mode=ParseMode.MARKDOWN,
+                disable_web_page_preview=True
+            )
+            return False
+    except UserNotParticipant:
+        invite_link = await get_invite_link(bot: client, chat_id=channel_chat_id)
+        if Config.VERIFY_PIC:
+            ver = await message.reply_photo(
+                photo=Config.VERIFY_PIC,
+                caption="<b>Pʟᴇᴀꜱᴇ Jᴏɪɴ Mʏ Uᴘᴅᴀᴛᴇꜱ Cʜᴀɴɴᴇʟ ᴛᴏ ᴜꜱᴇ ᴛʜɪꜱ Bᴏᴛ! \n\nDᴜᴇ ᴛᴏ Oᴠᴇʀʟᴏᴀᴅ, Oɴʟʏ Cʜᴀɴɴᴇʟ Sᴜʙꜱᴄʀɪʙᴇʀꜱ ᴄᴀɴ ᴜꜱᴇ ᴛʜɪꜱ Bᴏᴛ!</b>",
+                parse_mode=ParseMode.HTML,
+                reply_markup=InlineKeyboardMarkup(
+                [[
+                    InlineKeyboardButton("🤖 Jᴏɪɴ Oᴜʀ Cʜᴀɴɴᴇʟ 🤖", url=invite_link.invite_link)
+                ]]
+                )
+            )
+        else:
+            ver = await message.reply_text(
+                text = "<b>Pʟᴇᴀꜱᴇ Jᴏɪɴ Mʏ Uᴘᴅᴀᴛᴇꜱ Cʜᴀɴɴᴇʟ ᴛᴏ ᴜꜱᴇ ᴛʜɪꜱ Bᴏᴛ! \n\nDᴜᴇ ᴛᴏ Oᴠᴇʀʟᴏᴀᴅ, Oɴʟʏ Cʜᴀɴɴᴇʟ Sᴜʙꜱᴄʀɪʙᴇʀꜱ ᴄᴀɴ ᴜꜱᴇ ᴛʜɪꜱ Bᴏᴛ!</b>",
+                reply_markup=InlineKeyboardMarkup(
+                    [[
+                        InlineKeyboardButton("🤖 Jᴏɪɴ Oᴜʀ Cʜᴀɴɴᴇʟ 🤖", url=invite_link.invite_link)
+                    ]]
+                ),
+                parse_mode=ParseMode.HTML
+            )
+        await asyncio.sleep(50)
+        try:
+            await ver.delete()
+            await message.delete()
+        except Exception:
+            pass
+        return False
+    except Exception:
+        await message.reply_text(
+            text = f"<i>Sᴏᴍᴇᴛʜɪɴɢ ᴡʀᴏɴɢ ᴄᴏɴᴛᴀᴄᴛ ᴍʏ ᴅᴇᴠᴇʟᴏᴘᴇʀ</i> <b><a href='https://t.me/THE_DS_OFFICIAL'>[ ᴄʟɪᴄᴋ ʜᴇʀᴇ ]</a></b>",
+            parse_mode=ParseMode.HTML,
+            disable_web_page_preview=True)
+        return False
+    return True
      
 db = Database(Config.DATABASE_URI, Config.DATABASE_NAME)
