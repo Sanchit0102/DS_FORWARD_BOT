@@ -13,6 +13,7 @@ class Config:
     BOT_OWNER_ID = [int(id) for id in environ.get("BOT_OWNER_ID", '1562935405').split()]
     AUTH_CHANNEL = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('AUTH_CHANNEL', '-1002224312828').split()] # give channel id with seperate space. Ex : ('-10073828 -102782829 -1007282828')
     FORCE_SUB = environ.get("FORCE_SUB", "Silent_Bots")
+    DS_PIC = environ.get("DS_PIC", "https://graph.org/file/3f2c342ce06505d74d99f.jpg")
 
 class temp(object): 
     lock = {}
