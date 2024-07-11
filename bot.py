@@ -8,13 +8,13 @@ from pyrogram.raw.all import layer
 from pyrogram.enums import ParseMode
 from pyrogram.errors import FloodWait 
 
-# logging.config.fileConfig('logging.conf')
-# logging.getLogger().setLevel(logging.INFO)
-# logging.getLogger("pyrogram").setLevel(logging.ERROR)
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-)
+logging.config.fileConfig('logging.conf')
+logging.getLogger().setLevel(logging.INFO)
+logging.getLogger("pyrogram").setLevel(logging.ERROR)
+# logging.basicConfig(
+#     level=logging.DEBUG,
+#     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+# )
 
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
