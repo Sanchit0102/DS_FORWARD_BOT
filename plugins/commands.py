@@ -81,14 +81,20 @@ async def start(client, message):
     #             return
     #     except Exception as e:
     #         print(e)    
+    # user = message.from_user
+    # if not await db.is_user_exist(user.id):
+    #   await db.add_user(user.id, user.first_name)
+    # reply_markup = InlineKeyboardMarkup(main_buttons)
+    # await client.send_message(
+    #     chat_id=message.chat.id,
+    #     reply_markup=InlineKeyboardMarkup(main_buttons),
+    #     text=Translation.START_TXT.format(message.from_user.first_name))
     user = message.from_user
-    if not await db.is_user_exist(user.id):
-      await db.add_user(user.id, user.first_name)
-    reply_markup = InlineKeyboardMarkup(main_buttons)
-    await client.send_message(
-        chat_id=message.chat.id,
-        reply_markup=InlineKeyboardMarkup(main_buttons),
-        text=Translation.START_TXT.format(message.from_user.first_name))
+    await db.add_user(client, message) 
+    if Config.DS_PIC:
+        await message.reply_photo(Config.DS_PIC, caption=Translation.START_TXT.format(user.mention), reply_markup=main_buttons)       
+    else:
+        await message.reply_text(text=Translation.START_TXT.format(user.mention), reply_markup=main_buttons, disable_web_page_preview=True)
 
 #==================Restart Function==================#
 
