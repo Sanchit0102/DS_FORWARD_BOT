@@ -1,13 +1,18 @@
+import re
 from os import environ 
 
+id_pattern = re.compile(r'^.\d+$')
+
 class Config:
-    API_ID = environ.get("API_ID", "21701469")
-    API_HASH = environ.get("API_HASH", "ae456165cc04a86ee38bd8ced7dae0e3")
-    BOT_TOKEN = environ.get("BOT_TOKEN", "7017050619:AAE99kOJhQcbcsLAJNuWgHnJNsLZG4h72hM") 
-    BOT_SESSION = environ.get("BOT_SESSION", "bot") 
-    DATABASE_URI = environ.get("DATABASE", "mongodb+srv://rasy46765:uxDpwzp7DDHIKnCj@cluster0.rakmbj7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-    DATABASE_NAME = environ.get("DATABASE_NAME", "forward-bot")
-    BOT_OWNER_ID = [int(id) for id in environ.get("BOT_OWNER_ID", '6991096178').split()]
+    API_ID = environ.get("API_ID", "25570025")
+    API_HASH = environ.get("API_HASH", "62c95df09ad28778f17035b76abb3b22")
+    BOT_TOKEN = environ.get("BOT_TOKEN", "7201333775:AAHMuLKX4AHuP-YtMnjyquNqy153Kmf3GXE") 
+    BOT_SESSION = environ.get("BOT_SESSION", "public") 
+    DATABASE_URI = environ.get("DATABASE", "mongodb+srv://trumbot:trumbot@cluster0.cfkaeno.mongodb.net/?retryWrites=true&w=majority")
+    DATABASE_NAME = environ.get("DATABASE_NAME", "publicforward-bot")
+    BOT_OWNER_ID = [int(id) for id in environ.get("BOT_OWNER_ID", '1562935405').split()]
+    AUTH_CHANNEL = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('AUTH_CHANNEL', '-1002224312828').split()] # give channel id with seperate space. Ex : ('-10073828 -102782829 -1007282828')
+
 
 class temp(object): 
     lock = {}
