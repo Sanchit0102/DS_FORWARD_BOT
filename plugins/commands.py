@@ -7,8 +7,8 @@ from platform import python_version
 from translation import Translation
 from pyrogram import Client, filters, enums, __version__ as pyrogram_version
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, InputMediaDocument
-# from pyrogram.errors import *
-from pyrogram.errors import UserNotParticipant
+from pyrogram.errors import *
+# from pyrogram.errors import UserNotParticipant
 
 main_buttons = [[
         InlineKeyboardButton('🙋‍♂️ ʜᴇʟᴘ', callback_data='help'),
@@ -66,29 +66,29 @@ async def is_subscribed(bot, query, channel):
 
 @Client.on_message(filters.private & filters.command(['start']))
 async def start(client, message):
-    # client = client
-    # message = message
-    # if AUTH_CHANNEL:
-    #     try:
-    #         btn = await is_subscribed(client, message, AUTH_CHANNEL)
-    #         if btn:
-    #             username = (await client.get_me()).username
-    #             if message.command[1]:
-    #                 btn.append([InlineKeyboardButton("♻️ Try Again ♻️", url=f"https://t.me/{username}?start={message.command[1]}")])
-    #             else:
-    #                 btn.append([InlineKeyboardButton("♻️ Try Again ♻️", url=f"https://t.me/{username}?start=true")])
-    #             await message.reply_text(text=f"<b>👋 Hello {message.from_user.mention},\n\nPlease join the channel then click on try again button. 😇</b>", reply_markup=InlineKeyboardMarkup(btn))
-    #             return
-    #     except Exception as e:
-    #         print(e)    
-    # user = message.from_user
-    # if not await db.is_user_exist(user.id):
-    #   await db.add_user(user.id, user.first_name)
-    # reply_markup = InlineKeyboardMarkup(main_buttons)
-    # await client.send_message(
-    #     chat_id=message.chat.id,
-    #     reply_markup=InlineKeyboardMarkup(main_buttons),
-    #     text=Translation.START_TXT.format(message.from_user.first_name))
+     client = client
+     message = message
+     if AUTH_CHANNEL:
+         try:
+             btn = await is_subscribed(client, message, AUTH_CHANNEL)
+             if btn:
+                 username = (await client.get_me()).username
+                 if message.command[1]:
+                     btn.append([InlineKeyboardButton("♻️ Try Again ♻️", url=f"https://t.me/{username}?start={message.command[1]}")])
+                 else:
+                     btn.append([InlineKeyboardButton("♻️ Try Again ♻️", url=f"https://t.me/{username}?start=true")])
+                 await message.reply_text(text=f"<b>👋 Hello {message.from_user.mention},\n\nPlease join the channel then click on try again button. 😇</b>", reply_markup=InlineKeyboardMarkup(btn))
+                 return
+         except Exception as e:
+             print(e)    
+     user = message.from_user
+     if not await db.is_user_exist(user.id):
+       await db.add_user(user.id, user.first_name)  
+       reply_markup = InlineKeyboardMarkup(main_buttons)
+     await client.send_message(
+         chat_id=message.chat.id,
+         reply_markup=InlineKeyboardMarkup(main_buttons),
+         text=Translation.START_TXT.format(message.from_user.first_name))
     user = message.from_user
     await db.add_user(client, message) 
     if Config.DS_PIC:
