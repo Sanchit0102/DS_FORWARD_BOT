@@ -47,7 +47,7 @@ async def forces_sub(client, message):
     except UserNotParticipant:                       
         return await message.reply_text(text=text, reply_markup=InlineKeyboardMarkup(buttons))
     return await message.reply_text(text=text, reply_markup=InlineKeyboardMarkup(buttons))
-    return
+    pass
         
 #========================[ FORCE SUB DEF ]==============================#
 
