@@ -35,8 +35,8 @@ async def not_subscribed(_, client, message):
 
 # Combine the 2 defs and make change in start cmd
 
-@Client.on_message(filters.private & filters.create(not_subscribed))
-async def forces_sub(client, message):
+# @Client.on_message(filters.private & filters.create(not_subscribed))
+# async def forces_sub(client, message):
     username = (await client.get_me()).username
     buttons = [[
         InlineKeyboardButton("🤖 Join Update Channel 🤖", url=f"https://t.me/{Config.FORCE_SUB}") 
@@ -74,7 +74,9 @@ async def forces_sub(client, message):
 #===================Start Function===================#
 
 @Client.on_message(filters.private & filters.command('start'))
-async def start(client, message):
+async def start(_, client, message):
+    if not await not_subscribed(_, client, message):
+        return
     user = message.from_user
     if not await db.is_user_exist(user.id):
       await db.add_user(user.id, user.first_name)
