@@ -7,8 +7,7 @@ from platform import python_version
 from translation import Translation
 from pyrogram import Client, filters, enums, __version__ as pyrogram_version
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, InputMediaDocument
-from pyrogram.errors import *
-# from pyrogram.errors import UserNotParticipant
+from pyrogram.errors import UserNotParticipant
 
 main_buttons = [[
         InlineKeyboardButton('🙋‍♂️ ʜᴇʟᴘ', callback_data='help'),
