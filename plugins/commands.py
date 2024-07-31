@@ -51,10 +51,10 @@ async def forces_sub(client, message):
         elif user.status == enums.ChatMemberStatus.LEFT:
             return await message.reply_text(text=text, reply_markup=InlineKeyboardMarkup(buttons))
     except UserNotParticipant:                       
-        return await message.reply_text(text=text, reply_markup=InlineKeyboardMarkup(buttons))
-    return 
+        return await message.reply_text(text=text, reply_markup=InlineKeyboardMarkup(buttons)) 
     except Exception as e:
-        print(e)        
+        print(e)  
+    return
     
         
 #========================[ FORCE SUB DEF ]==============================#
