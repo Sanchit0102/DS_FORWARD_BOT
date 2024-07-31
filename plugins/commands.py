@@ -88,14 +88,14 @@ async def start(client, message):
      #             return
      #     except Exception as e:
      #         print(e)    
-     user = message.from_user
-     if not await db.is_user_exist(user.id):
-       await db.add_user(user.id, user.first_name)  
-       reply_markup = InlineKeyboardMarkup(main_buttons)
-     await client.send_message(
-         chat_id=message.chat.id,
-         reply_markup=InlineKeyboardMarkup(main_buttons),
-         text=Translation.START_TXT.format(message.from_user.first_name))
+     # user = message.from_user
+     # if not await db.is_user_exist(user.id):
+     #   await db.add_user(user.id, user.first_name)  
+     #   reply_markup = InlineKeyboardMarkup(main_buttons)
+     # await client.send_message(
+     #     chat_id=message.chat.id,
+     #     reply_markup=InlineKeyboardMarkup(main_buttons),
+     #     text=Translation.START_TXT.format(message.from_user.first_name))
     user = message.from_user
     await db.add_user(client, message) 
     if Config.DS_PIC:
