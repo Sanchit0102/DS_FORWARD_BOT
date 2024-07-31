@@ -18,7 +18,7 @@ main_buttons = [[
         ]]
 #===================Start Function===================#
 
-@Client.on_message(filters.private & filters.command(['start']))
+@Client.on_message(filters.private & filters.command('start'))
 async def start(client, message):
     user = message.from_user
     if not await db.is_user_exist(user.id):
