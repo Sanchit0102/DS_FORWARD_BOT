@@ -35,6 +35,7 @@ class Bot(Client):
         self.first_name = me.first_name
         self.set_parse_mode(ParseMode.DEFAULT)
         text = "**๏[-ิ_•ิ]๏ bot restarted !**"
+        await self.send_message(Config.ADMIN, f"**__BOT Startted.....✨️__**")
         logging.info(text)
         success = failed = 0
         users = await db.get_all_frwd()
@@ -55,6 +56,7 @@ class Bot(Client):
            logging.info(f"Restart message status"
                  f"success: {success}"
                  f"failed: {failed}")
+            
 
     async def stop(self, *args):
         msg = f"@{self.username} stopped. Bye."
