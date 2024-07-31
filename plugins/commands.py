@@ -33,10 +33,16 @@ async def not_subscribed(_, client, message):
         pass
     return True
 
+# Combine the 2 defs and make change in start cmd
 
 @Client.on_message(filters.private & filters.create(not_subscribed))
 async def forces_sub(client, message):
-    buttons = [[InlineKeyboardButton(text="🤖 Join Update Channel 🤖", url=f"https://t.me/{Config.FORCE_SUB}") ]]
+    username = (await client.get_me()).username
+    buttons = [[
+        InlineKeyboardButton("🤖 Join Update Channel 🤖", url=f"https://t.me/{Config.FORCE_SUB}") 
+        ],[     
+        InlineKeyboardButton("♻️ Try Again ♻️", url=f"https://t.me/{username}?start=true")        
+        ]]
     text = "**Sᴏʀʀy Dᴜᴅᴇ Yᴏᴜ'ʀᴇ Nᴏᴛ Jᴏɪɴᴇᴅ My Cʜᴀɴɴᴇʟ 😐. Sᴏ Pʟᴇᴀꜱᴇ Jᴏɪɴ Oᴜʀ Uᴩᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ Tᴏ Cᴄᴏɴᴛɪɴᴜᴇ**"
     try:
         user = await client.get_chat_member(Config.FORCE_SUB, message.from_user.id)    
@@ -46,8 +52,10 @@ async def forces_sub(client, message):
             return await message.reply_text(text=text, reply_markup=InlineKeyboardMarkup(buttons))
     except UserNotParticipant:                       
         return await message.reply_text(text=text, reply_markup=InlineKeyboardMarkup(buttons))
-    return await message.reply_text(text=text, reply_markup=InlineKeyboardMarkup(buttons))
-    pass
+    return 
+    except Exception as e:
+        print(e)        
+    
         
 #========================[ FORCE SUB DEF ]==============================#
 
@@ -67,21 +75,19 @@ async def forces_sub(client, message):
 
 @Client.on_message(filters.private & filters.command(['start']))
 async def start(client, message):
-     client = client
-     message = message
-     if AUTH_CHANNEL:
-         try:
-             btn = await is_subscribed(client, message, AUTH_CHANNEL)
-             if btn:
-                 username = (await client.get_me()).username
-                 if message.command[1]:
-                     btn.append([InlineKeyboardButton("♻️ Try Again ♻️", url=f"https://t.me/{username}?start={message.command[1]}")])
-                 else:
-                     btn.append([InlineKeyboardButton("♻️ Try Again ♻️", url=f"https://t.me/{username}?start=true")])
-                 await message.reply_text(text=f"<b>👋 Hello {message.from_user.mention},\n\nPlease join the channel then click on try again button. 😇</b>", reply_markup=InlineKeyboardMarkup(btn))
-                 return
-         except Exception as e:
-             print(e)    
+     # if AUTH_CHANNEL:
+     #     try:
+     #         btn = await is_subscribed(client, message, AUTH_CHANNEL)
+     #         if btn:
+     #             username = (await client.get_me()).username
+     #             if message.command[1]:
+     #                 btn.append([InlineKeyboardButton("♻️ Try Again ♻️", url=f"https://t.me/{username}?start={message.command[1]}")])
+     #             else:
+     #                 btn.append([InlineKeyboardButton("♻️ Try Again ♻️", url=f"https://t.me/{username}?start=true")])
+     #             await message.reply_text(text=f"<b>👋 Hello {message.from_user.mention},\n\nPlease join the channel then click on try again button. 😇</b>", reply_markup=InlineKeyboardMarkup(btn))
+     #             return
+     #     except Exception as e:
+     #         print(e)    
      user = message.from_user
      if not await db.is_user_exist(user.id):
        await db.add_user(user.id, user.first_name)  
