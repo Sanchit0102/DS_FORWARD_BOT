@@ -17,7 +17,7 @@ class Config:
     FORCE_SUB) else None
     WEBHOOK = bool(environ.get("WEBHOOK", True))
     PORT = int(environ.get("PORT", "8080"))
-
+    MUST_JOIN = environ.get("MUST_JOIN", "BOT_TESTING_OFFICIAL")
 
 class temp(object): 
     lock = {}
