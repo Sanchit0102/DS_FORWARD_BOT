@@ -15,8 +15,8 @@ class Config:
     FORCE_SUB = environ.get('FORCE_SUB', '-1002158291506') # ⚠️ Required
     AUTH_CHANNEL = int(FORCE_SUB) if FORCE_SUB and id_pattern.search(
     FORCE_SUB) else None
-    WEBHOOK = bool(os.environ.get("WEBHOOK", True))
-    PORT = int(os.environ.get("PORT", "8080"))
+    WEBHOOK = bool(environ.get("WEBHOOK", True))
+    PORT = int(environ.get("PORT", "8080"))
 
 
 class temp(object): 
