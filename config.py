@@ -7,7 +7,7 @@ id_pattern = re.compile(r'^.\d+$')
 class Config:
     API_ID = environ.get("API_ID", "25570025")
     API_HASH = environ.get("API_HASH", "62c95df09ad28778f17035b76abb3b22")
-    BOT_TOKEN = environ.get("BOT_TOKEN", "7201333775:AAHMuLKX4AHuP-YtMnjyquNqy153Kmf3GXE") 
+    BOT_TOKEN = environ.get("BOT_TOKEN", "7016777070:AAFRDJ6HCOzr0mOlqz9pakA2aSwN9JBtM1s") 
     BOT_SESSION = environ.get("BOT_SESSION", "bot") 
     DATABASE_URI = environ.get("DATABASE", "mongodb+srv://trumbot:trumbot@cluster0.cfkaeno.mongodb.net/?retryWrites=true&w=majority")
     DATABASE_NAME = environ.get("DATABASE_NAME", "publicforward-bot")
