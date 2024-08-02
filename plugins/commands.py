@@ -96,3 +96,10 @@ async def status(bot, query):
         parse_mode=enums.ParseMode.HTML,
         disable_web_page_preview=True,
     )
+
+
+@Client.on_message(filters.private & filters.incoming)
+async def capBot(client, message):
+    is_joined = await checkSub(client, message)
+    if not is_joined: return
+    await message.reply_text("use /start command to get started.")
