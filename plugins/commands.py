@@ -23,7 +23,7 @@ main_buttons = [[
 @Client.on_message(filters.private & filters.command(['start']))
 async def start(client, message):
     user = message.from_user
-    is_joined = await checkSub(client, message)
+    is_joined = await checkSub(bot:client, message:message)
     if not is_joined: return
     if not await db.is_user_exist(user.id):
       await db.add_user(user.id, user.first_name)
