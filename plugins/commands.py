@@ -2,6 +2,7 @@ import os
 import sys
 import asyncio 
 from database import *
+from .Fsub import checkSub
 from config import Config, temp
 from platform import python_version
 from translation import Translation
@@ -21,9 +22,9 @@ main_buttons = [[
 
 @Client.on_message(filters.private & filters.command(['start']))
 async def start(client, message):
-    if not await verify_user(client, message):
-        return
     user = message.from_user
+    is_joined = await checkSub(client, message)
+    if not is_joined: return
     if not await db.is_user_exist(user.id):
       await db.add_user(user.id, user.first_name)
     reply_markup = InlineKeyboardMarkup(main_buttons)
