@@ -14,8 +14,6 @@ class Config:
     DATABASE_NAME = environ.get("DATABASE_NAME", "publicforward-bot")
     BOT_OWNER_ID = [int(id) for id in environ.get("BOT_OWNER_ID", '1562935405').split()]
     FORCE_SUB_ID = environ.get('FORCE_SUB_ID', '-1002224312828')
-    FORCE_SUB = environ.get('FORCE_UPDATES_CHANNEL', True)
-    FORCE_SUB = True if str(FORCE_SUB).lower() == "True" else False
     VERIFY_PIC = environ.get('VERIFY_PIC', "https://graph.org/file/736e21cc0efa4d8c2a0e4.jpg")
     
 class temp(object): 
